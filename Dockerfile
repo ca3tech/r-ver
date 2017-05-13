@@ -121,5 +121,16 @@ RUN apt-get update \
   && apt-get autoclean -y \
   && rm -rf /var/lib/apt/lists/*
 
+### The majority of this file is from rocker/r-ver
+### The following are additions for ca3tech
+
+# Add Linux libraries that may be needed by R packages
+RUN apt-get update \
+    && apt-get install -y libpq-dev \
+    && apt-get install -y libxml2-dev \
+    && apt-get install -y openssh-client
+
+### End of CA3 Technologies additions
+
 CMD ["R"]
 
